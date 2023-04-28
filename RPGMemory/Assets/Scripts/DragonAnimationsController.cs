@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class DragonAnimationsController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Animator animator;
     void Start()
     {
-        
+        TryGetComponent(out animator);
+    }
+
+    void OnCardElementInvoke()
+    {
+
     }
 
     // Update is called once per frame

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1655221371956627119}
   - component: {fileID: 8179567822738014028}
   m_Layer: 0
-  m_Name: Card
+  m_Name: Card 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,8 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eba4da02ff4f4b469e5e0842b57631c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type:
-  - 
-  - 
-  - 
-  - 
+  id: 0
+  cardValuePoints: 0
+  currentVelocity: {x: 0, y: 0, z: 0}
+  cardType: 2

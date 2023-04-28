@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     int totalDeck;
     public GameStates gameStates;
+    public CardType cardType;
     bool fail;
+
     private void Awake()
     {
         if(instance != null)
@@ -60,4 +62,12 @@ public enum GameStates
     distribute,
     attack,
     gameOver
+}
+
+public enum CardType
+{
+    air,
+    earth,
+    fire,
+    water
 }

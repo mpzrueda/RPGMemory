@@ -23,7 +23,7 @@ public class Pool<Card>
     }
     void GrowPool(int growBy)
     {
-        for (int i = 0; i <  parents.Count/2; i++)
+        for (int i = 0; i <  parents.Count; i++)
         {
             var randomCard = Random.Range(0, prefabs.Length);
             var newItem = GameObject.Instantiate(prefabs[randomCard], parents[i].transform);

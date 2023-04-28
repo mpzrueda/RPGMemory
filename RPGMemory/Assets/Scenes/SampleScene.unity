@@ -443,6 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availCards: 0
+  totalDeck: 0
+  gameStates: 0
 --- !u!1 &1985164056 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8729994235565888375, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
@@ -484,6 +486,7 @@ MonoBehaviour:
     activeItems: 
   cardFloatHeight: 1
   spotOccupied: 
+  desktopCards: []
 --- !u!1001 &8729994233589522543
 PrefabInstance:
   m_ObjectHideFlags: 0

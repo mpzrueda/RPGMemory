@@ -44,7 +44,7 @@ public class CardSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.Instance.gameStates == GameStates.gameOver) return;
         if(GameManager.Instance.gameStates == GameStates.distribute)
         {
             FillSpots();

@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    int id;
-    float cardPoints;
-    GameObject creature;
+    public int id;
+    public float cardValuePoints;
+    //GameObject creature;
     bool isSelected;
-    public string[] type = new string[4];
+    [SerializeField]
+    Vector3 currentVelocity;
+    [SerializeField]
+    CardType cardType;
     void Start()
     {
-        type[0] = "air";
-        type[1] = "earth";
-        type[2] = "fire";
-        type[3] = "water";
+        
     }
 
     void Flip()
     {
-        if (isSelected)
-        {
-            transform.Rotate(Vector3.forward * 180);
-        }
+        var smooth = Vector3.SmoothDamp(transform.position, transform.eulerAngles * 180, ref currentVelocity , 0.5f, 1);
+        transform.Rotate(smooth);
+
+        isSelected = true;
     }
 
     public void Match()
@@ -32,11 +32,20 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnMouseDown()
     {
         Flip();
     }
+
+    /*
+     private void OnMouseDown()
+    {
+        pool.Recycling(this);
+        GameManager.Instance.availCards -= 1;
+        gameObject.SetActive(false);
+    }*/
+
 }
