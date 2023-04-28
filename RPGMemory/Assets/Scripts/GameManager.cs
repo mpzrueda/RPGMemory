@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     int totalDeck;
     public GameStates gameStates;
+    bool fail;
     private void Awake()
     {
         if(instance != null)
@@ -40,9 +41,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(availCards < totalDeck / 2)
+        if(availCards <= totalDeck / 2)
         {
             gameStates = GameStates.distribute;
+        }
+        if(gameStates == GameStates.turnA && fail)
+        {
+            gameStates = GameStates.turnB;
         }
     }
 }

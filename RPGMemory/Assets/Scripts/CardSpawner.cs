@@ -7,11 +7,12 @@ public class CardSpawner : MonoBehaviour
 
     [SerializeField]
     SpawnSpot[] spots = new SpawnSpot[7];
-    public Pool<CardTest> pool;
+    public Pool<Card> pool;
     [SerializeField]
     float cardFloatHeight;
     public List<bool> spotOccupied = new List<bool>();
-    int availCards;
+    public List<Card> desktopCards = new List<Card>();
+
     void Start()
     {
         spots = GetComponentsInChildren<SpawnSpot>();
@@ -44,9 +45,10 @@ public class CardSpawner : MonoBehaviour
     void Update()
     {
         
-        if(GameManager.Instance.availCards <= 4)
+        if(GameManager.Instance.gameStates == GameStates.distribute)
         {
             FillSpots();
+            GameManager.Instance.gameStates = GameStates.turnA;
         }
     }
 }

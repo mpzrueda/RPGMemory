@@ -5,7 +5,7 @@ using System;
 using Random = UnityEngine.Random;
 
 [Serializable]
-public class Pool<CardTest>
+public class Pool<Card>
 {
     [SerializeField]
     GameObject[] prefabs = new GameObject[8];
@@ -13,7 +13,7 @@ public class Pool<CardTest>
     [SerializeField]
     int initSize;
     [SerializeField]
-    List<CardTest> itemsInPool = new List<CardTest>();    
+    List<Card> itemsInPool = new List<Card>();    
     [SerializeField]
     List<bool> activeItems = new List<bool>();
 
@@ -23,18 +23,18 @@ public class Pool<CardTest>
     }
     void GrowPool(int growBy)
     {
-        for (int i = 0; i <  parents.Count; i++)
+        for (int i = 0; i <  parents.Count/2; i++)
         {
             var randomCard = Random.Range(0, prefabs.Length);
             var newItem = GameObject.Instantiate(prefabs[randomCard], parents[i].transform);
             newItem.gameObject.SetActive(false);
-            itemsInPool.Add(newItem.GetComponent<CardTest>());
+            itemsInPool.Add(newItem.GetComponent<Card>());
             activeItems.Add(false);
         }
 
     }
 
-    public CardTest ActivatingItem()
+    public Card ActivatingItem()
     {
         for (int i = 0; i < itemsInPool.Count; i++)
         {
@@ -51,7 +51,7 @@ public class Pool<CardTest>
         return itemsInPool[lastItemitem];
     }
 
-    public void Recycling(CardTest usedItem)
+    public void Recycling(Card usedItem)
     {
         var idx = itemsInPool.IndexOf(usedItem);
         activeItems[idx] = false;
