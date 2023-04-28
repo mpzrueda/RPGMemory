@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     int totalDeck;
     public GameStates gameStates;
+
+    public float playerA = 0;
+    public float playerB = 0;
+
     private void Awake()
     {
         if(instance != null)
