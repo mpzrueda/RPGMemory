@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-    
+    public int availCards;
+    [SerializeField]
+    int totalDeck;
+    public GameStates gameStates;
     private void Awake()
     {
         if(instance != null)
@@ -26,13 +29,21 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+        GameStart();
     }
 
+    void GameStart()
+    {
+        totalDeck = availCards;
+        gameStates = GameStates.gameStart;
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        if(availCards < totalDeck / 2)
+        {
+            gameStates = GameStates.distribute;
+        }
     }
 }
 
@@ -41,5 +52,7 @@ public enum GameStates
     gameStart,
     turnA,
     turnB,
+    distribute,
+    attack,
     gameOver
 }

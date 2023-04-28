@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class CardSpawner : MonoBehaviour
 {
-    //public CardTest[] cardTypes = new CardTest[8];
+
     [SerializeField]
     SpawnSpot[] spots = new SpawnSpot[7];
-    [SerializeField]
-    Pool<CardTest> pool;
+    public Pool<CardTest> pool;
     [SerializeField]
     float cardFloatHeight;
-    private void Awake()
+    public List<bool> spotOccupied = new List<bool>();
+    int availCards;
+    void Start()
     {
         spots = GetComponentsInChildren<SpawnSpot>();
         for (int i = 0; i < spots.Length; i++)
         {
             var parent = spots[i];
+            spotOccupied.Add(false);
             pool.parents.Add(parent);
         }
-    }
-    void Start()
-    {
-
         pool.Init();
-
         FillSpots();
     }
 
@@ -32,14 +29,24 @@ public class CardSpawner : MonoBehaviour
     {
         for (int i = 0; i < spots.Length; i++)
         {
-            var newItem = pool.ActivatingItem();
-            newItem.transform.position = spots[i].transform.position + Vector3.up * cardFloatHeight;
-            newItem.gameObject.SetActive(true);
+            if (!spotOccupied[i])
+            {
+                var newItem = pool.ActivatingItem();
+                newItem.transform.position = spots[i].transform.position + Vector3.up * cardFloatHeight;
+                newItem.gameObject.SetActive(true);
+                GameManager.Instance.availCards += 1;
+                spotOccupied.Add(true);
+            }
+
         }
     }
     // Update is called once per frame
     void Update()
     {
         
+        if(GameManager.Instance.availCards <= 4)
+        {
+            FillSpots();
+        }
     }
 }
