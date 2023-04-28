@@ -6,7 +6,7 @@ public class CardSpawner : MonoBehaviour
 {
 
     [SerializeField]
-    SpawnSpot[] spots = new SpawnSpot[7];
+    SpawnSpot[] spots = new SpawnSpot[12];
     public Pool<Card> pool;
     [SerializeField]
     float cardFloatHeight;

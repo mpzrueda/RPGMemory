@@ -445,48 +445,7 @@ MonoBehaviour:
   availCards: 0
   totalDeck: 0
   gameStates: 0
---- !u!1 &1985164056 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8729994235565888375, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
-  m_PrefabInstance: {fileID: 8729994233589522543}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1985164059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985164056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0203d3a8b89bcde4f984be6f93a299f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  pool:
-    prefabs:
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    parents: []
-    initSize: 7
-    itemsInPool: []
-    activeItems: 
-  cardFloatHeight: 1
-  spotOccupied: 
-  desktopCards: []
+  cardType: 0
 --- !u!1001 &8729994233589522543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -494,22 +453,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6602050060494769931, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6602050061327367287, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6602050061834273445, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8729994235551889064, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
-      objectReference: {fileID: 0}
     - target: {fileID: 8729994235565888374, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
       propertyPath: m_RootOrder
       value: 3

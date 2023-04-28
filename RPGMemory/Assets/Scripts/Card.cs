@@ -6,15 +6,20 @@ public class Card : MonoBehaviour
 {
     public int id;
     public float cardValuePoints;
-    //GameObject creature;
+    Pool<Card> pool;
+    [SerializeField]
+    GameObject creature;
     bool isSelected;
     [SerializeField]
     Vector3 currentVelocity;
     [SerializeField]
     CardType cardType;
+    WaitForSeconds WaitFor = new WaitForSeconds(3.5f);
     void Start()
     {
-        
+        var spawner = GetComponentInParent<CardSpawner>();
+        pool = spawner.pool;
+        creature.gameObject.SetActive(false);
     }
 
     void Flip()
@@ -35,17 +40,26 @@ public class Card : MonoBehaviour
 
     }
 
+    public IEnumerator MatchAnimTrigger()
+    {
+        creature.gameObject.SetActive(true);
+        GameManager.Instance.gameStates = GameStates.attack;
+        //Pending to add particle effects
+        yield return WaitFor;
+        creature.gameObject.SetActive(false);
+        yield return WaitFor;
+        pool.Recycling(this);
+        gameObject.SetActive(false);
+    }   
+
+
     private void OnMouseDown()
     {
         Flip();
+        StartCoroutine(MatchAnimTrigger());
     }
 
-    /*
-     private void OnMouseDown()
-    {
-        pool.Recycling(this);
-        GameManager.Instance.availCards -= 1;
-        gameObject.SetActive(false);
-    }*/
+
+
 
 }
