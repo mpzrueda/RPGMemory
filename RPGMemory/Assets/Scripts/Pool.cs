@@ -5,7 +5,7 @@ using System;
 using Random = UnityEngine.Random;
 
 [Serializable]
-public class Pool<CardTest>
+public class Pool<Card>
 {
     [SerializeField]
     GameObject[] prefabs = new GameObject[8];
@@ -13,45 +13,50 @@ public class Pool<CardTest>
     [SerializeField]
     int initSize;
     [SerializeField]
-    List<CardTest> itemsInPool = new List<CardTest>();    
+    List<Card> itemsInPool = new List<Card>();
     [SerializeField]
     List<bool> activeItems = new List<bool>();
-
+    bool randomHalfDeck;
     public void Init()
     {
-        GrowPool(initSize);
+        GrowPool();
     }
-    void GrowPool(int growBy)
+    void GrowPool()
     {
-        for (int i = 0; i <  parents.Count; i++)
+        for (int i = 0; i < parents.Count; i++)
         {
             var randomCard = Random.Range(0, prefabs.Length);
-            var newItem = GameObject.Instantiate(prefabs[randomCard], parents[i].transform);
+            var randomParent = Random.Range(0, parents.Count);
+            var newItem = GameObject.Instantiate(prefabs[randomCard], parents[randomParent].transform);
+            var newItem2 = GameObject.Instantiate(prefabs[randomCard], parents[randomParent].transform);
             newItem.gameObject.SetActive(false);
-            itemsInPool.Add(newItem.GetComponent<CardTest>());
+            newItem2.gameObject.SetActive(false);
+            itemsInPool.Add(newItem.GetComponent<Card>());
+            itemsInPool.Add(newItem2.GetComponent<Card>());
+            activeItems.Add(false);
             activeItems.Add(false);
         }
 
     }
 
-    public CardTest ActivatingItem()
+    public Card ActivatingItem()
     {
         for (int i = 0; i < itemsInPool.Count; i++)
         {
             if (!activeItems[i])
             {
                 activeItems[i] = true;
-                
+
                 return itemsInPool[i];
             }
         }
         var lastItemitem = itemsInPool.Count;
-        GrowPool(initSize);
+        GrowPool();
         activeItems[lastItemitem] = true;
         return itemsInPool[lastItemitem];
     }
 
-    public void Recycling(CardTest usedItem)
+    public void Recycling(Card usedItem)
     {
         var idx = itemsInPool.IndexOf(usedItem);
         activeItems[idx] = false;

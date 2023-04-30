@@ -12,15 +12,13 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
-    public int playerAPoints;
-    public int playerBPoints;
-
     public int availCards;
     [SerializeField]
     int totalDeck;
     public GameStates gameStates;
-    public Modality modality;
+    public CardType cardType;
+    bool fail;
+
     private void Awake()
     {
         if(instance != null)
@@ -39,17 +37,19 @@ public class GameManager : MonoBehaviour
 
     void GameStart()
     {
-        playerAPoints=0;
-        playerBPoints=0;
         totalDeck = availCards;
         gameStates = GameStates.gameStart;
     }
     // Update is called once per frame
     void Update()
     {
-        if(availCards < totalDeck / 2)
+        if(availCards <= totalDeck / 2)
         {
             gameStates = GameStates.distribute;
+        }
+        if(gameStates == GameStates.turnA && fail)
+        {
+            gameStates = GameStates.turnB;
         }
     }
 }
@@ -64,8 +64,10 @@ public enum GameStates
     gameOver
 }
 
-public enum Modality
+public enum CardType
 {
-    SinglePlayer,
-    Multiplayer
+    air,
+    earth,
+    fire,
+    water
 }

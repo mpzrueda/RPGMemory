@@ -6,12 +6,13 @@ public class CardSpawner : MonoBehaviour
 {
 
     [SerializeField]
-    SpawnSpot[] spots = new SpawnSpot[7];
-    public Pool<CardTest> pool;
+    SpawnSpot[] spots = new SpawnSpot[12];
+    public Pool<Card> pool;
     [SerializeField]
     float cardFloatHeight;
     public List<bool> spotOccupied = new List<bool>();
-    int availCards;
+    public List<Card> desktopCards = new List<Card>();
+
     void Start()
     {
         spots = GetComponentsInChildren<SpawnSpot>();
@@ -43,10 +44,11 @@ public class CardSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(GameManager.Instance.availCards <= 4)
+        if (GameManager.Instance.gameStates == GameStates.gameOver) return;
+        if(GameManager.Instance.gameStates == GameStates.distribute)
         {
             FillSpots();
+            GameManager.Instance.gameStates = GameStates.turnA;
         }
     }
 }
