@@ -36,6 +36,7 @@ public class CardSpawner : MonoBehaviour
                 newItem.transform.position = spots[i].transform.position + Vector3.up * cardFloatHeight;
                 newItem.gameObject.SetActive(true);
                 GameManager.Instance.availCards += 1;
+                desktopCards.Add(newItem);
                 spotOccupied.Add(true);
             }
 
@@ -45,10 +46,11 @@ public class CardSpawner : MonoBehaviour
     void Update()
     {
         if (GameManager.Instance.gameStates == GameStates.gameOver) return;
+        //CODE FOR RPG VERSION, WKILL REFILL THE BOARD WHEN HALF OF THE CARDS ARE USED
+        /*
         if(GameManager.Instance.gameStates == GameStates.distribute)
         {
             FillSpots();
-            GameManager.Instance.gameStates = GameStates.turnA;
-        }
+        }*/
     }
 }
