@@ -144,8 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eba4da02ff4f4b469e5e0842b57631c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 2
   cardValuePoints: 0
+  points: 40
   creature: {fileID: 6171542257580076002}
   currentVelocity: {x: 0, y: 0, z: 0}
   cardType: 0

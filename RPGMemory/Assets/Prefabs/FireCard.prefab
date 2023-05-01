@@ -145,7 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  cardValuePoints: 20
+  cardValuePoints: 30
+  points: 0
   creature: {fileID: 691913437939328589}
   currentVelocity: {x: 0, y: 0, z: 0}
   cardType: 2

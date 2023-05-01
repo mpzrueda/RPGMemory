@@ -31,9 +31,10 @@ public class Card : MonoBehaviour
         isSelected = true;
     }
 
-    public void Match()
+    public void DestroyMe()
     {
-        transform.localScale += Vector3.zero * 0.5f;
+        pool.Recycling(this);
+        gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -49,9 +50,10 @@ public class Card : MonoBehaviour
         //Pending to add particle effects
         yield return WaitFor;
         creature.gameObject.SetActive(false);
-        yield return WaitFor;
-        pool.Recycling(this);
-        gameObject.SetActive(false);
+        //yield return WaitFor;
+     //   pool.Recycling(this);
+     //   gameObject.SetActive(false);
         GameManager.Instance.gameStates = tmpState;
-    }   
+    }
+
 }

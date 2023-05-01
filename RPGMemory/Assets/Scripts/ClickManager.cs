@@ -85,7 +85,8 @@ public class ClickManager : MonoBehaviour
         {
             Debug.Log("Son iguales");
             applyPoints(carta_1.points);
-
+            carta_1.DestroyMe();
+            carta_2.DestroyMe();
             return true;
         }
         applyPoints(0);
