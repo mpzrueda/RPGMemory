@@ -6,6 +6,7 @@ public class Card : MonoBehaviour
 {
     public int id;
     public float cardValuePoints;
+    public int points;
     Pool<Card> pool;
     [SerializeField]
     GameObject creature;
@@ -22,7 +23,7 @@ public class Card : MonoBehaviour
         creature.gameObject.SetActive(false);
     }
 
-    void Flip()
+    public void Flip()
     {
         var smooth = Vector3.SmoothDamp(transform.position, transform.eulerAngles * 180, ref currentVelocity , 0.5f, 1);
         transform.Rotate(smooth);
@@ -43,6 +44,7 @@ public class Card : MonoBehaviour
     public IEnumerator MatchAnimTrigger()
     {
         creature.gameObject.SetActive(true);
+        GameStates tmpState = GameManager.Instance.gameStates;
         GameManager.Instance.gameStates = GameStates.attack;
         //Pending to add particle effects
         yield return WaitFor;
@@ -50,16 +52,6 @@ public class Card : MonoBehaviour
         yield return WaitFor;
         pool.Recycling(this);
         gameObject.SetActive(false);
+        GameManager.Instance.gameStates = tmpState;
     }   
-
-
-    private void OnMouseDown()
-    {
-        Flip();
-        StartCoroutine(MatchAnimTrigger());
-    }
-
-
-
-
 }

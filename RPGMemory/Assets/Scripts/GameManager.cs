@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Camera CameraPlayerA;
+    public Camera CameraPlayerB;
+
     private static GameManager instance;
     public static GameManager Instance
     {
@@ -15,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public int playerAPoints;
     public int playerBPoints;
+
+    public GameObject board;
 
     public int availCards;
     [SerializeField]
@@ -44,6 +49,8 @@ public class GameManager : MonoBehaviour
 
     void GameStart()
     {
+        CameraPlayerA.enabled = true;
+        CameraPlayerB.enabled = false;
         playerAPoints=0;
         playerBPoints=0;
         totalDeck = availCards;
@@ -56,10 +63,18 @@ public class GameManager : MonoBehaviour
         {
             gameStates = GameStates.distribute;
         }
-        if(gameStates == GameStates.turnA && fail)
+        if(gameStates == GameStates.turnA)
         {
-            gameStates = GameStates.turnB;
+            CameraPlayerA.enabled = true;
+            CameraPlayerB.enabled = false;
         }
+        if(gameStates == GameStates.turnB)
+        {
+            CameraPlayerA.enabled = false;
+            CameraPlayerB.enabled = true;
+
+        }
+
     }
 }
 
