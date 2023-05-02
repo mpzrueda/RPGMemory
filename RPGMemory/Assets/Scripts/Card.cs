@@ -21,10 +21,11 @@ public class Card : MonoBehaviour
     [SerializeField]
     CardType cardType;
     WaitForSeconds WaitFor = new WaitForSeconds(3.5f);
+    CardSpawner spawner;
     public bool flip;
     void Start()
     {
-        var spawner = GetComponentInParent<CardSpawner>();
+        spawner = GetComponentInParent<CardSpawner>();
         pool = spawner.pool;
         creature.gameObject.SetActive(false);
         flip = false;
@@ -48,11 +49,13 @@ public class Card : MonoBehaviour
     {
         pool.Recycling(this);
         gameObject.SetActive(false);
+        //var idx = spawner.desktopCards.IndexOf(this);
+        spawner.desktopCards.Remove(this);
     }
     // Update is called once per frame
     void Update()
     {
-        /*
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (flip)
@@ -63,7 +66,7 @@ public class Card : MonoBehaviour
             {
                 Flip();
             }
-        }*/
+        }
     }
 
     public IEnumerator MatchAnimTrigger()
