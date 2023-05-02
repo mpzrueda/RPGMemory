@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class Pool<Card>
 {
     [SerializeField]
-    GameObject[] prefabs = new GameObject[8];
+    GameObject[] prefabs = new GameObject[4];
     public List<SpawnSpot> parents = new List<SpawnSpot>();
     [SerializeField]
     int initSize;

@@ -9,26 +9,39 @@ public class Card : MonoBehaviour
     public int points;
     Pool<Card> pool;
     [SerializeField]
-    GameObject creature;
-    bool isSelected;
+    GameObject creature;    
+    [SerializeField]
+    Transform physicalCard;
+    [SerializeField]
+    float rotSpeed;    
+    [SerializeField]
+    Quaternion targetRot;
     [SerializeField]
     Vector3 currentVelocity;
     [SerializeField]
     CardType cardType;
     WaitForSeconds WaitFor = new WaitForSeconds(3.5f);
+    public bool flip;
     void Start()
     {
         var spawner = GetComponentInParent<CardSpawner>();
         pool = spawner.pool;
         creature.gameObject.SetActive(false);
+        flip = false;
     }
 
     public void Flip()
     {
-        var smooth = Vector3.SmoothDamp(transform.position, transform.eulerAngles * 180, ref currentVelocity , 0.5f, 1);
-        transform.Rotate(smooth);
+        targetRot = Quaternion.Euler(180, 0, 0f);
+        physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed);
+        flip = true;
 
-        isSelected = true;
+    }
+    public void FlipBack()
+    {
+        targetRot = Quaternion.Euler(360, 0, 0f);
+        physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed);
+        flip = false;
     }
 
     public void DestroyMe()
@@ -39,7 +52,18 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        /*
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (flip)
+            {
+                FlipBack();
+            }
+            else
+            {
+                Flip();
+            }
+        }*/
     }
 
     public IEnumerator MatchAnimTrigger()
@@ -55,5 +79,6 @@ public class Card : MonoBehaviour
      //   gameObject.SetActive(false);
         GameManager.Instance.gameStates = tmpState;
     }
+
 
 }

@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         playerAPoints=0;
         playerBPoints=0;
         totalDeck = availCards;
-        gameStates = GameStates.gameStart;
+        gameStates = GameStates.turnA;
     }
     // Update is called once per frame
     void Update()

@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 621083258}
   - component: {fileID: 621083257}
-  - component: {fileID: 621083256}
   m_Layer: 0
   m_Name: CameraPlayerB
   m_TagString: MainCamera
@@ -141,14 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &621083256
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621083255}
-  m_Enabled: 1
 --- !u!20 &621083257
 Camera:
   m_ObjectHideFlags: 0
@@ -768,6 +759,7 @@ MonoBehaviour:
   CameraPlayerB: {fileID: 621083257}
   playerAPoints: 0
   playerBPoints: 0
+  board: {fileID: 0}
   availCards: 0
   totalDeck: 0
   gameStates: 1
@@ -870,48 +862,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1985164056 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8729994235565888375, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
-  m_PrefabInstance: {fileID: 8729994233589522543}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1985164059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985164056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0203d3a8b89bcde4f984be6f93a299f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  pool:
-    prefabs:
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 2139375913793022698, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    parents: []
-    initSize: 7
-    itemsInPool: []
-    activeItems: 
-  cardFloatHeight: 1
-  spotOccupied: 
-  desktopCards: []
 --- !u!1 &2020168558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,22 +966,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6602050060494769931, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
+    - target: {fileID: 5618947924026488792, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
+      propertyPath: pool.initSize
+      value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 6602050061327367287, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
+    - target: {fileID: 5618947924026488792, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
+      propertyPath: cardFloatHeight
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6602050061834273445, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8729994235551889064, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
-      objectReference: {fileID: 0}
+    - target: {fileID: 5618947924026488792, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
+      propertyPath: pool.prefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5439113855307567514, guid: a625ffc9cc3e7d34c9494648e6671d6c, type: 3}
+    - target: {fileID: 5618947924026488792, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
+      propertyPath: pool.prefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8092650314040425050, guid: 337b0c05eb424d04991758780b702292, type: 3}
+    - target: {fileID: 5618947924026488792, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
+      propertyPath: pool.prefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 6171542258893936440, guid: 5bc561011db77814bb411b50f2e56467, type: 3}
+    - target: {fileID: 5618947924026488792, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
+      propertyPath: pool.prefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 691913439465984226, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
     - target: {fileID: 8729994235565888374, guid: 6d9d5a4f2ef7a3f448a2203de4d941be, type: 3}
       propertyPath: m_RootOrder
       value: 4

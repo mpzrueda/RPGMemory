@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8729994235565888374}
   - component: {fileID: 8729994235565888373}
-  - component: {fileID: 1985164059}
+  - component: {fileID: 5618947924026488792}
   m_Layer: 0
   m_Name: BoardSpawner
   m_TagString: Untagged
@@ -58,7 +58,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1985164059
+--- !u!114 &5618947924026488792
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,20 +79,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pool:
     prefabs:
-    - {fileID: 691913439465984226, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 691913439465984226, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
-    - {fileID: 5439113855307567514, guid: a625ffc9cc3e7d34c9494648e6671d6c, type: 3}
-    - {fileID: 5439113855307567514, guid: a625ffc9cc3e7d34c9494648e6671d6c, type: 3}
-    - {fileID: 6171542258893936440, guid: 5bc561011db77814bb411b50f2e56467, type: 3}
-    - {fileID: 8092650314040425050, guid: 337b0c05eb424d04991758780b702292, type: 3}
-    - {fileID: 691913439465984226, guid: bd9285750d9a95b4b991c04c245398a6, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     parents: []
-    initSize: 7
+    initSize: 0
     itemsInPool: []
     activeItems: 
-  cardFloatHeight: 1
+  cardFloatHeight: 0
   spotOccupied: 
   desktopCards: []
 --- !u!1001 &604245943110533300
