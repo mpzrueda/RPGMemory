@@ -34,9 +34,18 @@ public class UIController : MonoBehaviour
    
     public void StartGame()
     {
-
-        SceneManager.LoadScene("Game");        
+        SceneManager.LoadScene("PrototypeScene");        
     }
-    
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void PauseGame()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
 
 }
