@@ -36,13 +36,14 @@ public class Card : MonoBehaviour
         targetRot = Quaternion.Euler(180, 0, 0f);
         physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed);
         flip = true;
-
+        creature.gameObject.SetActive(true);
     }
     public void FlipBack()
     {
         targetRot = Quaternion.Euler(360, 0, 0f);
         physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed);
         flip = false;
+        creature.gameObject.SetActive(false);
     }
 
     public void DestroyMe()
@@ -69,17 +70,24 @@ public class Card : MonoBehaviour
         }
     }
 
-    public IEnumerator MatchAnimTrigger()
+    /*
+    public void MatchAnimTrigger()
     {
-        creature.gameObject.SetActive(true);
         GameStates tmpState = GameManager.Instance.gameStates;
         GameManager.Instance.gameStates = GameStates.attack;
         //Pending to add particle effects
-        yield return WaitFor;
-        creature.gameObject.SetActive(false);
-        //yield return WaitFor;
-     //   pool.Recycling(this);
-     //   gameObject.SetActive(false);
+        GameManager.Instance.gameStates = tmpState;
+    }
+    */
+
+    public IEnumerator MatchAnimTrigger()
+    {
+        //creature.gameObject.SetActive(true);
+        GameStates tmpState = GameManager.Instance.gameStates;
+        GameManager.Instance.gameStates = GameStates.attack;
+        //Pending to add particle effects
+        yield return new WaitForSeconds(2f);
+        //creature.gameObject.SetActive(false);
         GameManager.Instance.gameStates = tmpState;
     }
 

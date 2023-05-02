@@ -172,7 +172,7 @@ MonoBehaviour:
   rotSpeed: 3
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   currentVelocity: {x: 0, y: 0, z: 0}
-  cardType: 3
+  cardType: 0
   flip: 0
 --- !u!65 &2290768396605376626
 BoxCollider:

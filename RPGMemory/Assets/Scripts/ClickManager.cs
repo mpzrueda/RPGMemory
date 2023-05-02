@@ -11,6 +11,7 @@ public class ClickManager : MonoBehaviour
     private Card carta_2;
 
     private States state;
+    WaitForSeconds WaitFor = new WaitForSeconds(3.5f);
     // Start is called before the first frame update
     void Start()
     {
@@ -56,13 +57,14 @@ public class ClickManager : MonoBehaviour
                         carta_1 = hit.collider.gameObject.GetComponent<Card>();
                         state = States.Chosing;
                         carta_1.Flip();
-                        carta_1.StartCoroutine(carta_1.MatchAnimTrigger());
+                        
                     }
                     
                     else if(state == States.Chosing)
                     {
                         //Debug.Log("El segundo objeto es: " + hit.collider.gameObject.name);
                         carta_2 = hit.collider.gameObject.GetComponent<Card>();
+                        carta_2.Flip();
                         state = States.Free;
                         StartCoroutine(check());
                     }
@@ -71,28 +73,30 @@ public class ClickManager : MonoBehaviour
         }
     }
 
-    public IEnumerator check()
-    {
-        yield return carta_2.StartCoroutine(carta_2.MatchAnimTrigger());
-        carta_2.Flip();
-        Debug.Log("Voy a hacer check");
-        waitCheck(carta_1,carta_2);
-    }
 
-    bool waitCheck(Card carta_1, Card carta_2)
+
+    public IEnumerator check()
     {
         if(carta_1.id == carta_2.id)
         {
             Debug.Log("Son iguales");
+            carta_1.MatchAnimTrigger();
+            //yield return(carta_1.MatchAnimTrigger());
+            //yield return(carta_2.MatchAnimTrigger());
+            //carta_1.StartCoroutine(carta_1.MatchAnimTrigger());
+            yield return carta_2.StartCoroutine(carta_2.MatchAnimTrigger());
             applyPoints(carta_1.points);
             carta_1.DestroyMe();
             carta_2.DestroyMe();
-            return true;
         }
-        applyPoints(0);
-        return false;
+        else
+        {
+            yield return WaitFor;
+            carta_1.FlipBack();
+            carta_2.FlipBack();
+            applyPoints(0);
+        }
     }
-
 
     void applyPoints(int points)
     {
