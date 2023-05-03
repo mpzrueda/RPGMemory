@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Camera CameraPlayerA;
-    public Camera CameraPlayerB;
 
     private static GameManager instance;
     public static GameManager Instance
@@ -16,10 +14,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Camera CameraPlayerA;
+    public Camera CameraPlayerB;
+
+    public GameObject boardBase;
+    
     public int playerAPoints;
     public int playerBPoints;
+    
+    public Summoner summonerA;
+    public Summoner summonerB;
 
     public GameObject board;
+    float smooth = 5.0f;
 
     public int availCards;
     [SerializeField]
@@ -67,12 +74,15 @@ public class GameManager : MonoBehaviour
         {
             CameraPlayerA.enabled = true;
             CameraPlayerB.enabled = false;
+            Quaternion target = Quaternion.Euler(0, 0, 0);
+            boardBase.transform.rotation = Quaternion.Slerp(boardBase.transform.rotation, target,  Time.deltaTime * smooth);
         }
         if(gameStates == GameStates.turnB)
         {
             CameraPlayerA.enabled = false;
             CameraPlayerB.enabled = true;
-
+            Quaternion target = Quaternion.Euler(0, 180, 0);
+            boardBase.transform.rotation = Quaternion.Slerp(boardBase.transform.rotation, target,  Time.deltaTime * smooth);
         }
 
     }

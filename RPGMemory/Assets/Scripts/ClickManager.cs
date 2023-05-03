@@ -66,14 +66,33 @@ public class ClickManager : MonoBehaviour
                         carta_2 = hit.collider.gameObject.GetComponent<Card>();
                         carta_2.Flip();
                         state = States.Free;
+                        //check();
                         StartCoroutine(check());
                     }
                 }
             }
         }
     }
-
-
+/*
+    public void check()
+    {
+        if(carta_1.id == carta_2.id)
+        {
+            Debug.Log("Son iguales");
+            carta_1.MatchAnimTrigger();
+            carta_2.MatchAnimTrigger();
+            applyPoints(carta_1.points);
+            carta_1.DestroyMe();
+            carta_2.DestroyMe();
+        }
+        else
+        {
+            carta_1.FlipBack();
+            carta_2.FlipBack();
+            applyPoints(0);
+        }
+    }
+*/
 
     public IEnumerator check()
     {
@@ -85,12 +104,14 @@ public class ClickManager : MonoBehaviour
             //yield return(carta_2.MatchAnimTrigger());
             //carta_1.StartCoroutine(carta_1.MatchAnimTrigger());
             yield return carta_2.StartCoroutine(carta_2.MatchAnimTrigger());
-            applyPoints(carta_1.points);
+            applyPoints(carta_1.attack);
             carta_1.DestroyMe();
             carta_2.DestroyMe();
         }
         else
         {
+            Debug.Log("Son distintas");
+
             yield return WaitFor;
             carta_1.FlipBack();
             carta_2.FlipBack();
@@ -98,17 +119,17 @@ public class ClickManager : MonoBehaviour
         }
     }
 
-    void applyPoints(int points)
+    void applyPoints(float attack)
     {
         Debug.Log("Cambiare de turno");
         if(GameManager.Instance.gameStates == GameStates.turnA)
         {
-            GameManager.Instance.playerAPoints+=points;
+            GameManager.Instance.summonerB.life -= attack;
             GameManager.Instance.gameStates = GameStates.turnB;
         }
         else if(GameManager.Instance.gameStates == GameStates.turnB)
         {
-            GameManager.Instance.playerBPoints+=points;
+            GameManager.Instance.summonerA.life -= attack;
             GameManager.Instance.gameStates = GameStates.turnA;
         }
 

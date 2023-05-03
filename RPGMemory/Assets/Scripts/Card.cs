@@ -7,6 +7,10 @@ public class Card : MonoBehaviour
     public int id;
     public float cardValuePoints;
     public int points;
+    
+    public float attack = 50;
+    public float deffense = 10;
+
     Pool<Card> pool;
     [SerializeField]
     GameObject creature;    
