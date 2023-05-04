@@ -122,7 +122,18 @@ public class ClickManager : MonoBehaviour
 
         }
     }
-
+    public void SwitchTurn()
+    {
+        if (GameManager.Instance.gameStates == GameStates.gameOver) return;
+        if (GameManager.Instance.gameStates == GameStates.turnA)
+        {
+            GameManager.Instance.gameStates = GameStates.turnB;
+        }
+        else if (GameManager.Instance.gameStates == GameStates.turnB)
+        {
+            GameManager.Instance.gameStates = GameStates.turnB;
+        }
+    }
 }
 
 public enum States

@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 3439597895639973185}
   m_Father: {fileID: 8092650314040425051}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &8092650313348893067
 MeshFilter:
@@ -129,6 +129,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8092650313170699085}
+  - {fileID: 2689553364557813712}
   - {fileID: 8092650313348893064}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -154,7 +155,7 @@ MonoBehaviour:
   cardType: 1
   cardSpecialModes: 0
   flip: 0
-  particleEffect: {fileID: 6211125795773073634, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+  particleEffect: {fileID: 2083150489217623108}
 --- !u!65 &1265149319067865114
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -229,6 +230,73 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7953419286537161570, guid: 9e7487591b6dd5f4db98d8b08df51299, type: 3}
   m_PrefabInstance: {fileID: 4745616139445663267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5393777804241185958
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8092650314040425051}
+    m_Modifications:
+    - target: {fileID: 7986504087968017091, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_Name
+      value: EARTH circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+--- !u!198 &2083150489217623108 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6211125795773073634, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+  m_PrefabInstance: {fileID: 5393777804241185958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2689553364557813712 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8037160467862551414, guid: 602cd1f2c76cfe340bc2808e93b7ec66, type: 3}
+  m_PrefabInstance: {fileID: 5393777804241185958}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8092650313170356065
 PrefabInstance:

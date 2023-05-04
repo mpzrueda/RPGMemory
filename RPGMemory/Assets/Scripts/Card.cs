@@ -21,13 +21,13 @@ public class Card : MonoBehaviour
     public CardSpecialModes cardSpecialModes;
     CardSpawner spawner;
     public bool flip;
-    [SerializeField]
-    ParticleSystem particleEffect;
+    public ParticleSystem particleEffect;
     void Start()
     {
         spawner = GetComponentInParent<CardSpawner>();
         pool = spawner.pool;
         creature.gameObject.SetActive(false);
+        particleEffect.gameObject.SetActive(false);
         flip = false;
     }
 
@@ -49,6 +49,8 @@ public class Card : MonoBehaviour
     public void DestroyMe()
     {
         pool.Recycling(this);
+        creature.gameObject.SetActive(false);
+        particleEffect.gameObject.SetActive(false);
         gameObject.SetActive(false);
         spawner.desktopCards.Remove(this);
     }
@@ -65,6 +67,7 @@ public class Card : MonoBehaviour
             else
             {
                 Flip();
+
             }
         }
     }
@@ -81,8 +84,8 @@ public class Card : MonoBehaviour
 
     public IEnumerator ActivateEffect()
     {
-        particleEffect.Play();
-        yield return new WaitForSeconds(2f);
-        particleEffect.Stop();
+        particleEffect.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2);
+        particleEffect.gameObject.SetActive(false);
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class DragonAnimationsController : MonoBehaviour
 {
     Animator animator;
-
     void Start()
     {
         TryGetComponent(out animator);

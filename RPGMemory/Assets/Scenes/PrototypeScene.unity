@@ -597,10 +597,12 @@ MonoBehaviour:
   summonerB: {fileID: 239979414}
   board: {fileID: 0}
   availCards: 0
-  totalDeck: 0
+  totalDeck: 12
   gameStates: 1
   modality: 1
   cardType: 0
+  readyToRedistribute: 0
+  refilDeck: 1
 --- !u!4 &493260118
 Transform:
   m_ObjectHideFlags: 0
@@ -1647,16 +1649,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718009443}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6479c46919cbd794f9a34e9969eacf8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackBtn: {fileID: 0}
-  specialModeBtn: {fileID: 0}
-  decisionPanel: {fileID: 0}
-  playerAlifeSlider: {fileID: 0}
-  playerBlifeSlider: {fileID: 0}
+  uiGame: {fileID: 0}
 --- !u!1 &1830604694
 GameObject:
   m_ObjectHideFlags: 0

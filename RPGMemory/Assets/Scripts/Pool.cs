@@ -28,11 +28,11 @@ public class Pool<Card>
             var randomCard = Random.Range(0, prefabs.Length);
             var randomParent = Random.Range(0, parents.Count);
             var newItem = GameObject.Instantiate(prefabs[randomCard], parents[randomParent].transform);
-            var newItem2 = GameObject.Instantiate(prefabs[randomCard], parents[randomParent].transform);
+            //var newItem2 = GameObject.Instantiate(prefabs[randomCard], parents[randomParent].transform);
             newItem.gameObject.SetActive(false);
-            newItem2.gameObject.SetActive(false);
+            //newItem2.gameObject.SetActive(false);
             itemsInPool.Add(newItem.GetComponent<Card>());
-            itemsInPool.Add(newItem2.GetComponent<Card>());
+            //itemsInPool.Add(newItem2.GetComponent<Card>());
             activeItems.Add(false);
             activeItems.Add(false);
         }

@@ -36,8 +36,9 @@ public class GameManager : MonoBehaviour
     public Modality modality;
 
     public CardType cardType;
-    bool fail;
-
+    public bool readyToRedistribute;
+    CardSpawner spawner;
+    public bool refilDeck;
     private void Awake()
     {
         if(instance != null)
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameStart();
+        spawner = boardBase.GetComponentInChildren<CardSpawner>();
     }
 
     void GameStart()
@@ -60,15 +62,16 @@ public class GameManager : MonoBehaviour
         CameraPlayerB.enabled = false;
         playerAPoints=0;
         playerBPoints=0;
-        totalDeck = availCards;
+        readyToRedistribute = true;
         gameStates = GameStates.turnA;
     }
     // Update is called once per frame
     void Update()
     {
-        if(availCards <= totalDeck / 2)
+        availCards = spawner.desktopCards.Count;
+        if(availCards < 6)
         {
-            gameStates = GameStates.distribute;
+            readyToRedistribute = true;
         }
         if(gameStates == GameStates.turnA)
         {

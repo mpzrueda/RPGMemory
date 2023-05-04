@@ -37,7 +37,7 @@ public class CardSpawner : MonoBehaviour
                 newItem.gameObject.SetActive(true);
                 GameManager.Instance.availCards += 1;
                 desktopCards.Add(newItem);
-                spotOccupied.Add(true);
+                spotOccupied[i] = true;
             }
 
         }
@@ -47,10 +47,14 @@ public class CardSpawner : MonoBehaviour
     {
         if (GameManager.Instance.gameStates == GameStates.gameOver) return;
         //CODE FOR RPG VERSION, WKILL REFILL THE BOARD WHEN HALF OF THE CARDS ARE USED
-        /*
-        if(GameManager.Instance.gameStates == GameStates.distribute)
+        if (GameManager.Instance.refilDeck)
         {
-            FillSpots();
-        }*/
+            if (GameManager.Instance.readyToRedistribute)
+            {
+                FillSpots();
+                GameManager.Instance.readyToRedistribute = false;
+            }
+        }
+
     }
 }
