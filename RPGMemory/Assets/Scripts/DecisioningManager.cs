@@ -8,33 +8,15 @@ public class DecisioningManager : MonoBehaviour
 {
     ClickManager clickManager;
     bool onClickOption;
-
-    //For the UI
     [SerializeField]
-    Button attackBtn;
-    [SerializeField]
-    Button specialModeBtn;
-    public GameObject decisionPanel;
-    [SerializeField]
-    Slider playerAlifeSlider;
-    [SerializeField]
-    Slider playerBlifeSlider;
+    UIController_Game uiGame;
 
     void Start()
     {
         TryGetComponent(out clickManager);
-        attackBtn.onClick.AddListener(AttackMode);
-        specialModeBtn.onClick.AddListener(SpecialMode);
-        //For the UI
-        decisionPanel.gameObject.SetActive(false);
-        onClickOption = false;
-        playerAlifeSlider.minValue = 0;
-        playerAlifeSlider.maxValue = GameManager.Instance.summonerA.initialLife;
-        playerAlifeSlider.value = GameManager.Instance.summonerA.life;
-        playerBlifeSlider.minValue = 0;
-        playerBlifeSlider.maxValue = GameManager.Instance.summonerB.initialLife;
-        playerBlifeSlider.value = GameManager.Instance.summonerB.life;
-
+        uiGame.attackBtn.onClick.AddListener(AttackMode);
+        uiGame.specialModeBtn.onClick.AddListener(SpecialMode);
+        
     }
 
     public void AttackMode()
@@ -51,7 +33,7 @@ public class DecisioningManager : MonoBehaviour
             GameManager.Instance.gameStates = GameStates.turnA;
         }
         Debug.Log("click attack");
-        decisionPanel.gameObject.SetActive(false);
+        uiGame.decisionPanel.gameObject.SetActive(false);
         onClickOption = true;
     }
 
@@ -62,21 +44,21 @@ public class DecisioningManager : MonoBehaviour
             case CardSpecialModes.heal:
                 if(GameManager.Instance.gameStates == GameStates.turnA)
                 {
-                    GameManager.Instance.summonerB.life += clickManager.carta_1.deffense;
+                    GameManager.Instance.summonerA.life += clickManager.carta_1.deffense;
                 }
                 else if(GameManager.Instance.gameStates == GameStates.turnB)
                 {
-                    GameManager.Instance.summonerA.life += clickManager.carta_1.deffense;
+                    GameManager.Instance.summonerB.life += clickManager.carta_1.deffense;
                 }
                 Debug.Log("click special Mode");
                 onClickOption = true;
-                decisionPanel.gameObject.SetActive(false);
+                uiGame.decisionPanel.gameObject.SetActive(false);
 
                 break;
             case CardSpecialModes.elementDefense:
                 //call the specialMode code
                 onClickOption = true;
-                decisionPanel.gameObject.SetActive(false);
+                uiGame.decisionPanel.gameObject.SetActive(false);
 
                 break;
 
@@ -84,7 +66,7 @@ public class DecisioningManager : MonoBehaviour
     }
     public IEnumerator ActivateDecisionMaking()
     {
-        decisionPanel.gameObject.SetActive(true);
+        uiGame.decisionPanel.gameObject.SetActive(true);
         yield return null;
     }
 

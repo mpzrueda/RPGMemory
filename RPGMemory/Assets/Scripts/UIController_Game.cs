@@ -6,10 +6,8 @@ using TMPro;
 
 public class UIController_Game : MonoBehaviour
 {
-    [SerializeField]
-    Button attackBtn;
-    [SerializeField]
-    Button specialModeBtn;
+    public Button attackBtn;
+    public Button specialModeBtn;
 
     public GameObject decisionPanel;
     [SerializeField]
@@ -22,7 +20,7 @@ public class UIController_Game : MonoBehaviour
     void Start()
     {
         decisionPanel.gameObject.SetActive(false);
-        
+
         playerAlifeSlider.minValue = 0;
         playerAlifeSlider.maxValue = GameManager.Instance.summonerA.initialLife;
         playerAlifeSlider.value = GameManager.Instance.summonerA.life;
@@ -34,6 +32,12 @@ public class UIController_Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(GameManager.Instance.gameStates == GameStates.gameOver)
+        {
+            //ACTIVAR TEXTO DE GAME OVER
+        }else if(GameManager.Instance.gameStates == GameStates.attack)
+        {
+
+        }
     }
 }
