@@ -108,6 +108,8 @@ public class ClickManager : MonoBehaviour
             Debug.Log("Cambiare de turno");
             carta_1.DestroyMe();
             carta_2.DestroyMe();
+
+
         }
         else
         {

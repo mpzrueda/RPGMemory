@@ -146,19 +146,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  cardValuePoints: 30
-  points: 0
   attackPoints: 50
   deffense: 10
   creature: {fileID: 691913437939328589}
   physicalCard: {fileID: 691913438732087612}
   rotSpeed: 3
-  targetRot: {x: 0, y: 0, z: 0, w: 0}
-  currentVelocity: {x: 0, y: 0, z: 0}
   cardType: 2
   cardSpecialModes: 1
   flip: 0
-  particleEffect: {fileID: 0}
+  particleEffect: {fileID: 6211125795773073634, guid: 923be37d2b9804c4cb09e3febfa07559, type: 3}
 --- !u!65 &1461011394
 BoxCollider:
   m_ObjectHideFlags: 0
