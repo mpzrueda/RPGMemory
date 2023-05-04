@@ -336,6 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebcb2f067d4a094f8274f951c758534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialLife: 100
   life: 100
   defense: 100
 --- !u!135 &239979415
@@ -1509,6 +1510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebcb2f067d4a094f8274f951c758534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialLife: 100
   life: 100
   defense: 100
 --- !u!135 &1690668705
@@ -1601,6 +1603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1718009445}
   - component: {fileID: 1718009444}
+  - component: {fileID: 1718009446}
   m_Layer: 0
   m_Name: ClickerManager
   m_TagString: Untagged
@@ -1620,6 +1623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827f52b9d3dd13846abf16d8dd88fe50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carta_1: {fileID: 0}
+  carta_2: {fileID: 0}
 --- !u!4 &1718009445
 Transform:
   m_ObjectHideFlags: 0
@@ -1635,6 +1640,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1718009446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718009443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6479c46919cbd794f9a34e9969eacf8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackBtn: {fileID: 0}
+  specialModeBtn: {fileID: 0}
+  decisionPanel: {fileID: 0}
+  playerAlifeSlider: {fileID: 0}
+  playerBlifeSlider: {fileID: 0}
 --- !u!1 &1830604694
 GameObject:
   m_ObjectHideFlags: 0

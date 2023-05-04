@@ -5,10 +5,7 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public int id;
-    public float cardValuePoints;
-    public int points;
-    
-    public float attack = 50;
+    public float attackPoints = 50;
     public float deffense = 10;
 
     Pool<Card> pool;
@@ -18,15 +15,14 @@ public class Card : MonoBehaviour
     Transform physicalCard;
     [SerializeField]
     float rotSpeed;    
-    [SerializeField]
     Quaternion targetRot;
     [SerializeField]
-    Vector3 currentVelocity;
-    [SerializeField]
     CardType cardType;
-    WaitForSeconds WaitFor = new WaitForSeconds(3.5f);
+    public CardSpecialModes cardSpecialModes;
     CardSpawner spawner;
     public bool flip;
+    [SerializeField]
+    ParticleSystem particleEffect;
     void Start()
     {
         spawner = GetComponentInParent<CardSpawner>();
@@ -45,7 +41,7 @@ public class Card : MonoBehaviour
     public void FlipBack()
     {
         targetRot = Quaternion.Euler(360, 0, 0f);
-        physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed);
+        physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed); 
         flip = false;
         creature.gameObject.SetActive(false);
     }
@@ -54,7 +50,6 @@ public class Card : MonoBehaviour
     {
         pool.Recycling(this);
         gameObject.SetActive(false);
-        //var idx = spawner.desktopCards.IndexOf(this);
         spawner.desktopCards.Remove(this);
     }
     // Update is called once per frame
@@ -74,26 +69,20 @@ public class Card : MonoBehaviour
         }
     }
 
-    /*
-    public void MatchAnimTrigger()
-    {
-        GameStates tmpState = GameManager.Instance.gameStates;
-        GameManager.Instance.gameStates = GameStates.attack;
-        //Pending to add particle effects
-        GameManager.Instance.gameStates = tmpState;
-    }
-    */
-
     public IEnumerator MatchAnimTrigger()
     {
-        //creature.gameObject.SetActive(true);
         GameStates tmpState = GameManager.Instance.gameStates;
         GameManager.Instance.gameStates = GameStates.attack;
+        StartCoroutine(ActivateEffect());
         //Pending to add particle effects
         yield return new WaitForSeconds(2f);
-        //creature.gameObject.SetActive(false);
         GameManager.Instance.gameStates = tmpState;
     }
 
-
+    public IEnumerator ActivateEffect()
+    {
+        particleEffect.Play();
+        yield return new WaitForSeconds(2f);
+        particleEffect.Stop();
+    }
 }

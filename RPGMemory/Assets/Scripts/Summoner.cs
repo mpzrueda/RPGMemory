@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Summoner : MonoBehaviour
 {
-
+    public float initialLife = 100;
     public float life = 100;
     public float defense = 100;
 

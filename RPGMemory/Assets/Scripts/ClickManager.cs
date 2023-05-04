@@ -5,16 +5,18 @@ using UnityEngine.EventSystems;
 
 public class ClickManager : MonoBehaviour
 {
-
-    
-    private Card carta_1;
-    private Card carta_2;
+    [HideInInspector]
+    public Card carta_1;
+    [HideInInspector]
+    public Card carta_2;
 
     private States state;
     WaitForSeconds WaitFor = new WaitForSeconds(3.5f);
+    DecisioningManager decisioningManager;
     // Start is called before the first frame update
     void Start()
     {
+        TryGetComponent(out decisioningManager);
         state = States.Free;
     }
 
@@ -53,7 +55,6 @@ public class ClickManager : MonoBehaviour
                 {
                     if(state == States.Free)
                     {
-                        //Debug.Log("El primer objeto es: " + hit.collider.gameObject.name);
                         carta_1 = hit.collider.gameObject.GetComponent<Card>();
                         state = States.Chosing;
                         carta_1.Flip();
@@ -62,12 +63,11 @@ public class ClickManager : MonoBehaviour
                     
                     else if(state == States.Chosing)
                     {
-                        //Debug.Log("El segundo objeto es: " + hit.collider.gameObject.name);
                         carta_2 = hit.collider.gameObject.GetComponent<Card>();
                         carta_2.Flip();
                         state = States.Free;
                         //check();
-                        StartCoroutine(check());
+                        StartCoroutine(Check());
                     }
                 }
             }
@@ -94,7 +94,7 @@ public class ClickManager : MonoBehaviour
     }
 */
 
-    public IEnumerator check()
+    public IEnumerator Check()
     {
         if(carta_1.id == carta_2.id)
         {
@@ -104,7 +104,8 @@ public class ClickManager : MonoBehaviour
             //yield return(carta_2.MatchAnimTrigger());
             //carta_1.StartCoroutine(carta_1.MatchAnimTrigger());
             yield return carta_2.StartCoroutine(carta_2.MatchAnimTrigger());
-            applyPoints(carta_1.attack);
+            StartCoroutine(decisioningManager.ActivateDecisionMaking());
+            Debug.Log("Cambiare de turno");
             carta_1.DestroyMe();
             carta_2.DestroyMe();
         }
@@ -115,25 +116,11 @@ public class ClickManager : MonoBehaviour
             yield return WaitFor;
             carta_1.FlipBack();
             carta_2.FlipBack();
-            applyPoints(0);
+            Debug.Log("Cambiare de turno");
+
         }
     }
 
-    void applyPoints(float attack)
-    {
-        Debug.Log("Cambiare de turno");
-        if(GameManager.Instance.gameStates == GameStates.turnA)
-        {
-            GameManager.Instance.summonerB.life -= attack;
-            GameManager.Instance.gameStates = GameStates.turnB;
-        }
-        else if(GameManager.Instance.gameStates == GameStates.turnB)
-        {
-            GameManager.Instance.summonerA.life -= attack;
-            GameManager.Instance.gameStates = GameStates.turnA;
-        }
-
-    }
 }
 
 public enum States
