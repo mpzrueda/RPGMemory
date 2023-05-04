@@ -10,16 +10,25 @@ public class Summoner : MonoBehaviour
 
     void Update()
     {
-        CheckIsImDead();
+        if (CheckIsImDead())
+        {
+            LoseGame();
+        }
+        
     }
 
-    public void CheckIsImDead()
+    public bool CheckIsImDead()
     {
         if(life<=0 && GameManager.Instance.gameStates != GameStates.gameOver)
         {
-            Debug.Log("Se acabo el juego");
-            GameManager.Instance.gameStates = GameStates.gameOver;
-            Destroy(this.gameObject);
+            return true;
         }
+        return false;
+    }
+
+    public void LoseGame()
+    {
+        GameManager.Instance.gameStates = GameStates.gameOver;
+        Destroy(this.gameObject);
     }
 }

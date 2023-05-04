@@ -24,9 +24,11 @@ public class Card : MonoBehaviour
     Vector3 currentVelocity;
     [SerializeField]
     CardType cardType;
-    WaitForSeconds WaitFor = new WaitForSeconds(3.5f);
+    WaitForSeconds WaitFor = new WaitForSeconds(2f);
     CardSpawner spawner;
     public bool flip;
+
+
     void Start()
     {
         spawner = GetComponentInParent<CardSpawner>();
@@ -90,7 +92,7 @@ public class Card : MonoBehaviour
         GameStates tmpState = GameManager.Instance.gameStates;
         GameManager.Instance.gameStates = GameStates.attack;
         //Pending to add particle effects
-        yield return new WaitForSeconds(2f);
+        yield return WaitFor;
         //creature.gameObject.SetActive(false);
         GameManager.Instance.gameStates = tmpState;
     }
