@@ -22,6 +22,8 @@ public class Card : MonoBehaviour
     CardSpawner spawner;
     public bool flip;
     public ParticleSystem particleEffect;
+
+
     void Start()
     {
         spawner = GetComponentInParent<CardSpawner>();
@@ -37,6 +39,8 @@ public class Card : MonoBehaviour
         physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed);
         flip = true;
         creature.gameObject.SetActive(true);
+        
+        
     }
     public void FlipBack()
     {
@@ -44,6 +48,7 @@ public class Card : MonoBehaviour
         physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed); 
         flip = false;
         creature.gameObject.SetActive(false);
+        
     }
 
     public void DestroyMe()
@@ -53,6 +58,7 @@ public class Card : MonoBehaviour
         particleEffect.gameObject.SetActive(false);
         gameObject.SetActive(false);
         spawner.desktopCards.Remove(this);
+        
     }
     // Update is called once per frame
     void Update()
