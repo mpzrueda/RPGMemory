@@ -102,10 +102,11 @@ public class ClickManager : MonoBehaviour
         {
             Debug.Log("Son iguales");
             carta_1.MatchAnimTrigger();
+            carta_2.MatchAnimTrigger();
             //yield return(carta_1.MatchAnimTrigger());
             //yield return(carta_2.MatchAnimTrigger());
             //carta_1.StartCoroutine(carta_1.MatchAnimTrigger());
-            yield return carta_2.StartCoroutine(carta_2.MatchAnimTrigger());
+            yield return StartCoroutine(carta_2.MatchAnimTrigger());
             StartCoroutine(decisioningManager.ActivateDecisionMaking());
             Debug.Log("Cambiare de turno");
             carta_1.DestroyMe();

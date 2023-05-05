@@ -53,13 +53,10 @@ public class Card : MonoBehaviour
 
     public void DestroyMe()
     {
-        FlipBack();
         pool.Recycling(this);
         creature.gameObject.SetActive(false);
         particleEffect.gameObject.SetActive(false);
         gameObject.SetActive(false);
-        var idx = spawner.desktopCards.IndexOf(this);
-        spawner.spotOccupied[idx] = false;
         spawner.desktopCards.Remove(this);
         
     }
@@ -87,7 +84,7 @@ public class Card : MonoBehaviour
         GameManager.Instance.gameStates = GameStates.attack;
         StartCoroutine(ActivateEffect());
         //Pending to add particle effects
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         GameManager.Instance.gameStates = tmpState;
     }
 

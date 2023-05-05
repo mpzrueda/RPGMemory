@@ -154,7 +154,7 @@ MonoBehaviour:
   physicalCard: {fileID: 691913438732087612}
   rotSpeed: 3
   cardType: 2
-  cardSpecialModes: 1
+  cardSpecialModes: 0
   flip: 0
   particleEffect: {fileID: 4469856876805541840}
   flipBack: {fileID: 0}

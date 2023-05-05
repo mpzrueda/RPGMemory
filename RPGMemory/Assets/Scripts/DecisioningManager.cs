@@ -18,12 +18,13 @@ public class DecisioningManager : MonoBehaviour
         TryGetComponent(out clickManager);
         uiGame.attackBtn.onClick.AddListener(AttackMode);
         uiGame.specialModeBtn.onClick.AddListener(SpecialMode);
-
+        
     }
 
     public void AttackMode()
     {
-        uiGame.cardPowerText.text = "Attack Points " + clickManager.carta_1.attackPoints.ToString();
+        uiGame.cardPowerText.text = "Attack Points: " + clickManager.carta_1.attackPoints.ToString();
+        uiGame.cardPowerText.text = "Heal Points: " + clickManager.carta_1.deffense.ToString();
 
         //attack points must be obtained from the clicker manager
         if (GameManager.Instance.gameStates == GameStates.turnA)
@@ -71,8 +72,9 @@ public class DecisioningManager : MonoBehaviour
     public IEnumerator ActivateDecisionMaking()
     {
         uiGame.decisionPanel.gameObject.SetActive(true);
-        //textTrial.text = clickManager.carta_1.cardType.ToString();
-        //Debug.Log("switched to text");
+        uiGame.cardPowerText.text = "Attack Points: " + clickManager.carta_1.attackPoints.ToString();
+        uiGame.cardPowerText.text = "Heal Points: " + clickManager.carta_1.deffense.ToString();
+
 
         yield return null;
     }
