@@ -120,6 +120,8 @@ public class ClickManager : MonoBehaviour
             carta_1.FlipBack();
             carta_2.FlipBack();
             Debug.Log("Cambiare de turno");
+            SwitchTurn();
+
 
         }
     }
