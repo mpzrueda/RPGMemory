@@ -16,8 +16,8 @@ public class Card : MonoBehaviour
     [SerializeField]
     float rotSpeed;    
     Quaternion targetRot;
-    [SerializeField]
-    CardType cardType;
+
+    public CardType cardType;
     public CardSpecialModes cardSpecialModes;
     CardSpawner spawner;
     public bool flip;
