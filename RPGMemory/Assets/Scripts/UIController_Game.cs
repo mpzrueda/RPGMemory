@@ -14,7 +14,8 @@ public class UIController_Game : MonoBehaviour
     Slider playerAlifeSlider;
     [SerializeField]
     Slider playerBlifeSlider;
-
+    public TextMeshProUGUI cardPowerText;
+    public TextMeshProUGUI specialModeText;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class UIController_Game : MonoBehaviour
         playerBlifeSlider.minValue = 0;
         playerBlifeSlider.maxValue = GameManager.Instance.summonerB.initialLife;
         playerBlifeSlider.value = GameManager.Instance.summonerB.life;
+
     }
 
     // Update is called once per frame
@@ -35,7 +37,8 @@ public class UIController_Game : MonoBehaviour
         if(GameManager.Instance.gameStates == GameStates.gameOver)
         {
             //ACTIVAR TEXTO DE GAME OVER
-        }else if(GameManager.Instance.gameStates == GameStates.attack)
+        }
+        else if(GameManager.Instance.gameStates == GameStates.attack)
         {
 
         }

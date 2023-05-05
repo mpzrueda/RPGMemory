@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         availCards = spawner.desktopCards.Count;
-        if(availCards < 6)
+        if(availCards <= 6)
         {
             readyToRedistribute = true;
         }

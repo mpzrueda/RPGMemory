@@ -10,17 +10,21 @@ public class DecisioningManager : MonoBehaviour
     bool onClickOption;
     [SerializeField]
     UIController_Game uiGame;
+    [SerializeField]
+    TextMeshProUGUI textTrial;
 
     void Start()
     {
         TryGetComponent(out clickManager);
         uiGame.attackBtn.onClick.AddListener(AttackMode);
         uiGame.specialModeBtn.onClick.AddListener(SpecialMode);
-        
+
     }
 
     public void AttackMode()
     {
+        uiGame.cardPowerText.text = "Attack Points " + clickManager.carta_1.attackPoints.ToString();
+
         //attack points must be obtained from the clicker manager
         if (GameManager.Instance.gameStates == GameStates.turnA)
         {
@@ -67,6 +71,9 @@ public class DecisioningManager : MonoBehaviour
     public IEnumerator ActivateDecisionMaking()
     {
         uiGame.decisionPanel.gameObject.SetActive(true);
+        //textTrial.text = clickManager.carta_1.cardType.ToString();
+        //Debug.Log("switched to text");
+
         yield return null;
     }
 
