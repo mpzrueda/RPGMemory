@@ -30,16 +30,18 @@ public class DecisioningManager : MonoBehaviour
         if (GameManager.Instance.gameStates == GameStates.turnA)
         {
             GameManager.Instance.summonerB.life -= clickManager.carta_1.attackPoints;
-            GameManager.Instance.gameStates = GameStates.turnB;
+
+            //GameManager.Instance.gameStates = GameStates.turnB;
         }
         else if (GameManager.Instance.gameStates == GameStates.turnB)
         {
             GameManager.Instance.summonerA.life -= clickManager.carta_1.attackPoints;
-            GameManager.Instance.gameStates = GameStates.turnA;
+            //GameManager.Instance.gameStates = GameStates.turnA;
         }
+        clickManager.SwitchTurn();
         Debug.Log("click attack");
         uiGame.decisionPanel.gameObject.SetActive(false);
-        onClickOption = true;
+        clickManager.SwitchTurn();
     }
 
     public void SpecialMode()
@@ -58,12 +60,14 @@ public class DecisioningManager : MonoBehaviour
                 Debug.Log("click special Mode");
                 onClickOption = true;
                 uiGame.decisionPanel.gameObject.SetActive(false);
+                clickManager.SwitchTurn();
 
                 break;
             case CardSpecialModes.elementDefense:
                 //call the specialMode code
                 onClickOption = true;
                 uiGame.decisionPanel.gameObject.SetActive(false);
+                clickManager.SwitchTurn();
 
                 break;
 
