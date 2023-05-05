@@ -9,6 +9,8 @@ public class ClickManager : MonoBehaviour
     public Card carta_1;
     [HideInInspector]
     public Card carta_2;
+    
+    
 
     private States state;
     WaitForSeconds WaitFor = new WaitForSeconds(3.5f);
@@ -18,6 +20,7 @@ public class ClickManager : MonoBehaviour
     {
         TryGetComponent(out decisioningManager);
         state = States.Free;
+        
     }
 
     void Update()
@@ -57,8 +60,7 @@ public class ClickManager : MonoBehaviour
                     {
                         carta_1 = hit.collider.gameObject.GetComponent<Card>();
                         state = States.Chosing;
-                        carta_1.Flip();
-                        
+                        carta_1.Flip(); 
                     }
                     
                     else if(state == States.Chosing)
