@@ -18,12 +18,13 @@ public class DecisioningManager : MonoBehaviour
         TryGetComponent(out clickManager);
         uiGame.attackBtn.onClick.AddListener(AttackMode);
         uiGame.specialModeBtn.onClick.AddListener(SpecialMode);
-        
+
     }
 
     public void AttackMode()
     {
         uiGame.cardPowerText.text = "Attack Points " + clickManager.carta_1.attackPoints.ToString();
+
         //attack points must be obtained from the clicker manager
         if (GameManager.Instance.gameStates == GameStates.turnA)
         {

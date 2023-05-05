@@ -28,6 +28,7 @@ public class UIController_Game : MonoBehaviour
         playerBlifeSlider.minValue = 0;
         playerBlifeSlider.maxValue = GameManager.Instance.summonerB.initialLife;
         playerBlifeSlider.value = GameManager.Instance.summonerB.life;
+
     }
 
     // Update is called once per frame
