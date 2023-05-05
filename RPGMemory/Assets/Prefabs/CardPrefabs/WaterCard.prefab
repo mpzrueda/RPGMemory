@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
-  attackPoints: 50
+  attackPoints: 30
   deffense: 10
   creature: {fileID: 6171542257580076002}
   physicalCard: {fileID: 6171542258764764299}

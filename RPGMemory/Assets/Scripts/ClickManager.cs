@@ -61,7 +61,7 @@ public class ClickManager : MonoBehaviour
                         
                     }
                     
-                    else if(state == States.Chosing)
+                    else if(state == States.Chosing && carta_1!= hit.collider.gameObject.GetComponent<Card>())
                     {
                         carta_2 = hit.collider.gameObject.GetComponent<Card>();
                         carta_2.Flip();
