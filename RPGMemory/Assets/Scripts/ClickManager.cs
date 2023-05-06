@@ -9,8 +9,6 @@ public class ClickManager : MonoBehaviour
     public Card carta_1;
     [HideInInspector]
     public Card carta_2;
-    
-    
 
     private States state;
     WaitForSeconds WaitFor = new WaitForSeconds(3.5f);
@@ -20,7 +18,6 @@ public class ClickManager : MonoBehaviour
     {
         TryGetComponent(out decisioningManager);
         state = States.Free;
-        
     }
 
     void Update()
@@ -47,7 +44,7 @@ public class ClickManager : MonoBehaviour
 
     void DetectObjectClicked()
     {
-        if (Input.GetMouseButtonDown(0)) // Left mouse button clicked
+        if (Input.GetMouseButtonDown(0)) 
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -56,45 +53,26 @@ public class ClickManager : MonoBehaviour
             {
                 if(hit.collider.gameObject.GetComponent<Card>() != null)
                 {
-                    if(state == States.Free)
+                    if(state == States.Free && carta_1 == null)
                     {
                         carta_1 = hit.collider.gameObject.GetComponent<Card>();
                         state = States.Chosing;
-                        carta_1.Flip(); 
+                        carta_1.Flip();
+                        
                     }
                     
                     else if(state == States.Chosing && carta_1!= hit.collider.gameObject.GetComponent<Card>())
                     {
                         carta_2 = hit.collider.gameObject.GetComponent<Card>();
-                        carta_2.Flip();
                         state = States.Free;
-                        //check();
+                        carta_2.Flip();
                         StartCoroutine(Check());
                     }
                 }
             }
         }
     }
-/*
-    public void check()
-    {
-        if(carta_1.id == carta_2.id)
-        {
-            Debug.Log("Son iguales");
-            carta_1.MatchAnimTrigger();
-            carta_2.MatchAnimTrigger();
-            applyPoints(carta_1.points);
-            carta_1.DestroyMe();
-            carta_2.DestroyMe();
-        }
-        else
-        {
-            carta_1.FlipBack();
-            carta_2.FlipBack();
-            applyPoints(0);
-        }
-    }
-*/
+
 
     public IEnumerator Check()
     {
@@ -103,15 +81,13 @@ public class ClickManager : MonoBehaviour
             Debug.Log("Son iguales");
             carta_1.MatchAnimTrigger();
             carta_2.MatchAnimTrigger();
-            //yield return(carta_1.MatchAnimTrigger());
-            //yield return(carta_2.MatchAnimTrigger());
-            //carta_1.StartCoroutine(carta_1.MatchAnimTrigger());
             yield return StartCoroutine(carta_2.MatchAnimTrigger());
             StartCoroutine(decisioningManager.ActivateDecisionMaking());
             Debug.Log("Cambiare de turno");
             carta_1.DestroyMe();
             carta_2.DestroyMe();
 
+            SwitchTurn();
 
         }
         else
@@ -123,8 +99,7 @@ public class ClickManager : MonoBehaviour
             carta_2.FlipBack();
             Debug.Log("Cambiare de turno");
             SwitchTurn();
-
-
+            state = States.Free;
         }
     }
     public void SwitchTurn()
@@ -136,8 +111,10 @@ public class ClickManager : MonoBehaviour
         }
         else if (GameManager.Instance.gameStates == GameStates.turnB)
         {
-            GameManager.Instance.gameStates = GameStates.turnB;
+            GameManager.Instance.gameStates = GameStates.turnA;
         }
+        carta_1 = null;
+        carta_2 = null;
     }
 }
 
