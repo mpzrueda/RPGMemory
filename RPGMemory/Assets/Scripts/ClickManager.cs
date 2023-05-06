@@ -80,26 +80,19 @@ public class ClickManager : MonoBehaviour
         {
             Debug.Log("Son iguales");
             carta_1.MatchAnimTrigger();
-            carta_2.MatchAnimTrigger();
             yield return StartCoroutine(carta_2.MatchAnimTrigger());
             StartCoroutine(decisioningManager.ActivateDecisionMaking());
-            Debug.Log("Cambiare de turno");
             carta_1.DestroyMe();
             carta_2.DestroyMe();
-
-            SwitchTurn();
-
         }
         else
         {
             Debug.Log("Son distintas");
-
             yield return WaitFor;
             carta_1.FlipBack();
             carta_2.FlipBack();
-            Debug.Log("Cambiare de turno");
-            SwitchTurn();
             state = States.Free;
+            SwitchTurn();
         }
     }
     public void SwitchTurn()

@@ -38,7 +38,7 @@ public class DecisioningManager : MonoBehaviour
             GameManager.Instance.summonerA.life -= clickManager.carta_1.attackPoints;
             //GameManager.Instance.gameStates = GameStates.turnA;
         }
-        clickManager.SwitchTurn();
+        //clickManager.SwitchTurn();
         Debug.Log("click attack");
         uiGame.decisionPanel.gameObject.SetActive(false);
         clickManager.SwitchTurn();
