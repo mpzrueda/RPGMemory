@@ -69,7 +69,8 @@ public class UIController_Game : MonoBehaviour
     void GameOverCanva()
     {
         game0verPanel.gameObject.SetActive(true);
-        winnerText.text = "Congrats " + GameManager.Instance.gameStates + "They Glory is yours";
+        winnerText.text = "Congrats " + GameManager.Instance.gameStates + "They Glory is yours.";
+        Debug.Log("GameOverIsTrue");
     }
 
     IEnumerator AttackUI()
