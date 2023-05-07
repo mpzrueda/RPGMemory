@@ -44,7 +44,7 @@ public class UIController : MonoBehaviour
 
     public void QuitGame()
     {
-        SceneManager.LoadScene("Menu");
+        QuitGame();
     }
 
     public void PauseGame()
