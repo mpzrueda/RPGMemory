@@ -157,7 +157,8 @@ MonoBehaviour:
   cardSpecialModes: 0
   flip: 0
   particleEffect: {fileID: 6430873402275229124}
-  flipBack: {fileID: 0}
+  flipCardSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
+  matchCardSound: {fileID: 8300000, guid: 21c4a490b24ba2045bc815f7626a40ef, type: 3}
 --- !u!65 &6171542258893936446
 BoxCollider:
   m_ObjectHideFlags: 0

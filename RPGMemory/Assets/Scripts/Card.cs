@@ -23,6 +23,10 @@ public class Card : MonoBehaviour
     public bool flip;
     public ParticleSystem particleEffect;
 
+    private AudioSource audioSource;
+
+    public AudioClip flipCardSound;
+    public AudioClip matchCardSound;
 
     void Start()
     {
@@ -31,6 +35,7 @@ public class Card : MonoBehaviour
         creature.gameObject.SetActive(false);
         particleEffect.gameObject.SetActive(false);
         flip = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Flip()
@@ -39,8 +44,8 @@ public class Card : MonoBehaviour
         physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed);
         flip = true;
         creature.gameObject.SetActive(true);
-        
-        
+        audioSource.PlayOneShot(flipCardSound,1.0f);
+
     }
     public void FlipBack()
     {
@@ -48,7 +53,7 @@ public class Card : MonoBehaviour
         physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed); 
         flip = false;
         creature.gameObject.SetActive(false);
-        
+        audioSource.PlayOneShot(flipCardSound,1.0f);
     }
 
     public void DestroyMe()
@@ -83,9 +88,12 @@ public class Card : MonoBehaviour
         GameStates tmpState = GameManager.Instance.gameStates;
         GameManager.Instance.gameStates = GameStates.attack;
         StartCoroutine(ActivateEffect());
+        audioSource.PlayOneShot(matchCardSound,1.0f);
+
         //Pending to add particle effects
         yield return new WaitForSeconds(2f);
         GameManager.Instance.gameStates = tmpState;
+
     }
 
     public IEnumerator ActivateEffect()
