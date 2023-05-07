@@ -152,7 +152,7 @@ MonoBehaviour:
   deffense: 15
   creature: {fileID: 9125118162946659744}
   physicalCard: {fileID: 5439113855295275117}
-  rotSpeed: 3
+  rotSpeed: 5
   cardType: 0
   cardSpecialModes: 0
   flip: 0

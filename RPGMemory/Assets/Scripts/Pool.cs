@@ -16,7 +16,6 @@ public class Pool<Card>
     List<Card> itemsInPool = new List<Card>();
     [SerializeField]
     List<bool> activeItems = new List<bool>();
-    bool randomHalfDeck;
     public void Init()
     {
         GrowPool();
@@ -25,18 +24,15 @@ public class Pool<Card>
     {
         for (int i = 0; i < parents.Count; i++)
         {
-            var randomCard = Random.Range(0, prefabs.Length);
-            var randomParent = Random.Range(0, parents.Count);
-            var newItem = GameObject.Instantiate(prefabs[randomCard], parents[randomParent].transform);
-            //var newItem2 = GameObject.Instantiate(prefabs[randomCard], parents[randomParent].transform);
-            newItem.gameObject.SetActive(false);
-            //newItem2.gameObject.SetActive(false);
-            itemsInPool.Add(newItem.GetComponent<Card>());
-            //itemsInPool.Add(newItem2.GetComponent<Card>());
-            activeItems.Add(false);
-            activeItems.Add(false);
+            if (!parents[i].occupied)
+            {
+                var randomCard = Random.Range(0, prefabs.Length);
+                var newItem = GameObject.Instantiate(prefabs[randomCard], parents[i].transform);
+                newItem.gameObject.SetActive(false);
+                itemsInPool.Add(newItem.GetComponent<Card>());
+                activeItems.Add(false);
+            }
         }
-
     }
 
     public Card ActivatingItem()

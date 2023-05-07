@@ -36,7 +36,7 @@ public class ClickManager : MonoBehaviour
         {
             if(Input.GetMouseButtonDown(0) && GameManager.Instance.gameStates == GameStates.turnA)
             {
-                Debug.Log("Te toca");
+                //Debug.Log("Te toca");
                 DetectObjectClicked();
             }
         }
@@ -78,7 +78,7 @@ public class ClickManager : MonoBehaviour
     {
         if(carta_1.id == carta_2.id)
         {
-            Debug.Log("Son iguales");
+            //Debug.Log("Son iguales");
             carta_1.MatchAnimTrigger();
             yield return StartCoroutine(carta_2.MatchAnimTrigger());
             StartCoroutine(decisioningManager.ActivateDecisionMaking());
@@ -87,7 +87,7 @@ public class ClickManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Son distintas");
+            //Debug.Log("Son distintas");
             yield return WaitFor;
             carta_1.FlipBack();
             carta_2.FlipBack();

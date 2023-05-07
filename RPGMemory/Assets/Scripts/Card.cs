@@ -19,7 +19,9 @@ public class Card : MonoBehaviour
 
     public CardType cardType;
     public CardSpecialModes cardSpecialModes;
-    CardSpawner spawner;
+    [HideInInspector]
+    public CardSpawner spawner;
+    SpawnSpot spawnSpot;
     public bool flip;
     public ParticleSystem particleEffect;
 
@@ -34,14 +36,13 @@ public class Card : MonoBehaviour
         pool = spawner.pool;
         creature.gameObject.SetActive(false);
         particleEffect.gameObject.SetActive(false);
-        flip = false;
         audioSource = GetComponent<AudioSource>();
     }
 
     public void Flip()
     {
-        targetRot = Quaternion.Euler(180, 0, 0f);
-        physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed);
+        targetRot = Quaternion.Euler(180, 180, 0);
+        physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed) ;
         flip = true;
         creature.gameObject.SetActive(true);
         audioSource.PlayOneShot(flipCardSound,1.0f);
@@ -62,8 +63,8 @@ public class Card : MonoBehaviour
         pool.Recycling(this);
         creature.gameObject.SetActive(false);
         particleEffect.gameObject.SetActive(false);
-        var idx  = spawner.desktopCards.IndexOf(this);
-        spawner.spotOccupied[idx] = false;
+        spawnSpot = GetComponentInParent<SpawnSpot>();
+        spawnSpot.occupied = false;
         gameObject.SetActive(false);
         spawner.desktopCards.Remove(this);
         
@@ -71,7 +72,8 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        rotSpeed += Time.deltaTime;
+        /*
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (flip)
@@ -83,7 +85,7 @@ public class Card : MonoBehaviour
                 Flip();
 
             }
-        }
+        }*/
     }
 
     public IEnumerator MatchAnimTrigger()

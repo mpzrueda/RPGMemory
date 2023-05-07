@@ -5,12 +5,11 @@ using UnityEngine;
 public class CardSpawner : MonoBehaviour
 {
 
-    [SerializeField]
-    SpawnSpot[] spots = new SpawnSpot[12];
+    [HideInInspector]
+    public SpawnSpot[] spots = new SpawnSpot[12];
     public Pool<Card> pool;
     [SerializeField]
     float cardFloatHeight;
-    public List<bool> spotOccupied = new List<bool>();
     public List<Card> desktopCards = new List<Card>();
 
     void Start()
@@ -19,7 +18,6 @@ public class CardSpawner : MonoBehaviour
         for (int i = 0; i < spots.Length; i++)
         {
             var parent = spots[i];
-            spotOccupied.Add(false);
             pool.parents.Add(parent);
         }
         pool.Init();
@@ -30,16 +28,16 @@ public class CardSpawner : MonoBehaviour
     {
         for (int i = 0; i < spots.Length; i++)
         {
-            if (!spotOccupied[i])
+            if (!spots[i].occupied)
             {
                 var newItem = pool.ActivatingItem();
                 newItem.transform.position = spots[i].transform.position + Vector3.up * cardFloatHeight;
                 newItem.gameObject.SetActive(true);
                 GameManager.Instance.availCards += 1;
                 desktopCards.Add(newItem);
-                spotOccupied[i] = true;
-            }
+                spots[i].occupied = true;
 
+            }
         }
     }
     // Update is called once per frame
