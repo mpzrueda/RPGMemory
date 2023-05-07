@@ -41,6 +41,11 @@ public class UIController : MonoBehaviour
     {
         SceneManager.LoadScene("PrototypeScene");
     }
+    
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 
     public void QuitGame()
     {

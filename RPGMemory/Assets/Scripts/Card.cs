@@ -58,9 +58,12 @@ public class Card : MonoBehaviour
 
     public void DestroyMe()
     {
+        FlipBack();
         pool.Recycling(this);
         creature.gameObject.SetActive(false);
         particleEffect.gameObject.SetActive(false);
+        var idx  = spawner.desktopCards.IndexOf(this);
+        spawner.spotOccupied[idx] = false;
         gameObject.SetActive(false);
         spawner.desktopCards.Remove(this);
         

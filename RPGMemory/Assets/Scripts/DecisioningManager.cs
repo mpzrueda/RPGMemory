@@ -11,7 +11,6 @@ public class DecisioningManager : MonoBehaviour
     [SerializeField]
     UIController_Game uiGame;
     [SerializeField]
-    TextMeshProUGUI textTrial;
 
     void Start()
     {
@@ -23,23 +22,14 @@ public class DecisioningManager : MonoBehaviour
 
     public void AttackMode()
     {
-        uiGame.cardPowerText.text = "Attack Points: " + clickManager.carta_1.attackPoints.ToString();
-        uiGame.cardPowerText.text = "Heal Points: " + clickManager.carta_1.deffense.ToString();
-
-        //attack points must be obtained from the clicker manager
         if (GameManager.Instance.gameStates == GameStates.turnA)
         {
             GameManager.Instance.summonerB.life -= clickManager.carta_1.attackPoints;
-
-            //GameManager.Instance.gameStates = GameStates.turnB;
         }
         else if (GameManager.Instance.gameStates == GameStates.turnB)
         {
             GameManager.Instance.summonerA.life -= clickManager.carta_1.attackPoints;
-            //GameManager.Instance.gameStates = GameStates.turnA;
         }
-        //clickManager.SwitchTurn();
-        Debug.Log("click attack");
         uiGame.decisionPanel.gameObject.SetActive(false);
         clickManager.SwitchTurn();
     }
@@ -57,7 +47,6 @@ public class DecisioningManager : MonoBehaviour
                 {
                     GameManager.Instance.summonerB.life += clickManager.carta_1.deffense;
                 }
-                Debug.Log("click special Mode");
                 onClickOption = true;
                 uiGame.decisionPanel.gameObject.SetActive(false);
                 clickManager.SwitchTurn();
@@ -76,10 +65,8 @@ public class DecisioningManager : MonoBehaviour
     public IEnumerator ActivateDecisionMaking()
     {
         uiGame.decisionPanel.gameObject.SetActive(true);
-        uiGame.cardPowerText.text = "Attack Points: " + clickManager.carta_1.attackPoints.ToString();
+        uiGame.attackText.text = "Attack Points: " + clickManager.carta_1.attackPoints.ToString();
         uiGame.cardPowerText.text = "Heal Points: " + clickManager.carta_1.deffense.ToString();
-
-
         yield return null;
     }
 

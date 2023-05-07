@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public Summoner summonerA;
     public Summoner summonerB;
 
+    public UIController_Game mainUI;
+
     public GameObject board;
     float smooth = 5.0f;
 
@@ -69,8 +71,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         availCards = spawner.desktopCards.Count;
-        if(availCards < 6)
+        if(availCards <= 6)
         {
+            Debug.Log("A rellenar");
             readyToRedistribute = true;
         }
         if(gameStates == GameStates.turnA)
@@ -86,6 +89,10 @@ public class GameManager : MonoBehaviour
             CameraPlayerB.enabled = true;
             Quaternion target = Quaternion.Euler(0, 180, 0);
             boardBase.transform.rotation = Quaternion.Slerp(boardBase.transform.rotation, target,  Time.deltaTime * smooth);
+        }
+        if(gameStates == GameStates.gameOver)
+        {
+            mainUI.GameOverCanva();
         }
 
     }

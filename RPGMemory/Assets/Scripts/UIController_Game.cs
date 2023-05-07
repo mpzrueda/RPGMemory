@@ -10,10 +10,6 @@ public class UIController_Game : MonoBehaviour
     public Button specialModeBtn;
 
     public GameObject decisionPanel;
-    [SerializeField]
-    Slider playerAlifeSlider;
-    [SerializeField]
-    Slider playerBlifeSlider;
 
     //To assign in the inspector
     public TextMeshProUGUI cardPowerText;
@@ -37,24 +33,12 @@ public class UIController_Game : MonoBehaviour
         decisionPanel.gameObject.SetActive(false);
         game0verPanel.gameObject.SetActive(false);
         game0verPanel.gameObject.SetActive(false);
-        replayButton.onClick.AddListener(uIController.StartGame);
-        mainMenuButton.onClick.AddListener(uIController.QuitGame);
-        playerAlifeSlider.minValue = 0;
-        playerAlifeSlider.maxValue = GameManager.Instance.summonerA.initialLife;
-        playerAlifeSlider.value = GameManager.Instance.summonerA.life;
-        playerBlifeSlider.minValue = 0;
-        playerBlifeSlider.maxValue = GameManager.Instance.summonerB.initialLife;
-        playerBlifeSlider.value = GameManager.Instance.summonerB.life;
+        replayButton.onClick.AddListener(uIController.StartGame);        
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerAlifeSlider.value = GameManager.Instance.summonerA.life;
-        Debug.Log(playerAlifeSlider.value);
-        playerBlifeSlider.value = GameManager.Instance.summonerB.life;
-        Debug.Log(playerAlifeSlider.value);
-
 
         if (GameManager.Instance.gameStates == GameStates.gameOver)
         {
@@ -66,11 +50,10 @@ public class UIController_Game : MonoBehaviour
         }
 
     }
-    void GameOverCanva()
+    public void GameOverCanva()
     {
         game0verPanel.gameObject.SetActive(true);
-        winnerText.text = "Congrats " + GameManager.Instance.gameStates + "They Glory is yours.";
-        Debug.Log("GameOverIsTrue");
+        winnerText.text = "Congrats. The Glory is yours.";
     }
 
     IEnumerator AttackUI()

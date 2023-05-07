@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   attackPoints: 35
-  deffense: 10
+  deffense: 25
   creature: {fileID: 691913437939328589}
   physicalCard: {fileID: 691913438732087612}
   rotSpeed: 3

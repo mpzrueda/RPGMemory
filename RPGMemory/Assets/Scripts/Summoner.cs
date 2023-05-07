@@ -19,7 +19,7 @@ public class Summoner : MonoBehaviour
         {
             Debug.Log("Se acabo el juego");
             GameManager.Instance.gameStates = GameStates.gameOver;
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 }
