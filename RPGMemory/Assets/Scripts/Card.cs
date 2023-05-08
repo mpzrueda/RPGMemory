@@ -15,6 +15,7 @@ public class Card : MonoBehaviour
     Transform physicalCard;
     [SerializeField]
     float rotSpeed;    
+    Quaternion initRot;
     Quaternion targetRot;
 
     public CardType cardType;
@@ -37,11 +38,12 @@ public class Card : MonoBehaviour
         creature.gameObject.SetActive(false);
         particleEffect.gameObject.SetActive(false);
         audioSource = GetComponent<AudioSource>();
+        initRot = transform.rotation;
     }
 
     public void Flip()
     {
-        targetRot = Quaternion.Euler(180, 180, 0);
+        targetRot = Quaternion.Euler(180, 0, 0);
         physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed) ;
         flip = true;
         creature.gameObject.SetActive(true);
@@ -50,7 +52,7 @@ public class Card : MonoBehaviour
     }
     public void FlipBack()
     {
-        targetRot = Quaternion.Euler(360, 0, 0f);
+        targetRot = Quaternion.Euler(360, 0, 0);
         physicalCard.transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed); 
         flip = false;
         creature.gameObject.SetActive(false);
@@ -69,42 +71,23 @@ public class Card : MonoBehaviour
         spawner.desktopCards.Remove(this);
         
     }
-    // Update is called once per frame
     void Update()
     {
-        rotSpeed += Time.deltaTime;
-        /*
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (flip)
-            {
-                FlipBack();
-            }
-            else
-            {
-                Flip();
 
-            }
-        }*/
     }
 
     public IEnumerator MatchAnimTrigger()
     {
         GameStates tmpState = GameManager.Instance.gameStates;
         GameManager.Instance.gameStates = GameStates.attack;
-        StartCoroutine(ActivateEffect());
         audioSource.PlayOneShot(matchCardSound,1.0f);
-
-        //Pending to add particle effects
         yield return new WaitForSeconds(2f);
         GameManager.Instance.gameStates = tmpState;
 
     }
 
-    public IEnumerator ActivateEffect()
+    public void ActivateEffect()
     {
         particleEffect.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2);
-        particleEffect.gameObject.SetActive(false);
     }
 }

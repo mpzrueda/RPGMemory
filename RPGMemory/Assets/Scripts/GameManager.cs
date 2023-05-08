@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
         availCards = spawner.desktopCards.Count;
         if(availCards <= 6)
         {
-            Debug.Log("A rellenar");
             readyToRedistribute = true;
         }
         if(gameStates == GameStates.turnA)
