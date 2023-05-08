@@ -24,6 +24,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField]
     Button PauseButton;
+    [SerializeField]
+    Button QuitButton;
 
     public void StartMenu()
     {
@@ -49,7 +51,7 @@ public class UIController : MonoBehaviour
 
     public void QuitGame()
     {
-        QuitGame();
+        Application.Quit();
     }
 
     public void PauseGame()

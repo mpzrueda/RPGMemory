@@ -98,7 +98,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Special PowerUp:'
+  m_text: Heal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d7c47696378bcb44a1a0ddb8dd760dd, type: 2}
   m_sharedMaterial: {fileID: 889707965963596622, guid: 6d7c47696378bcb44a1a0ddb8dd760dd, type: 2}
@@ -348,7 +348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -190.7, y: -21.00001}
+  m_AnchoredPosition: {x: -152, y: -21.00001}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9056504192597631621
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Special PowerUp:'
+  m_text: Attack
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d7c47696378bcb44a1a0ddb8dd760dd, type: 2}
   m_sharedMaterial: {fileID: 889707965963596622, guid: 6d7c47696378bcb44a1a0ddb8dd760dd, type: 2}
@@ -753,8 +753,6 @@ MonoBehaviour:
   attackBtn: {fileID: 3762141959783843874}
   specialModeBtn: {fileID: 3762141960841442668}
   decisionPanel: {fileID: 3762141959905747006}
-  playerAlifeSlider: {fileID: 0}
-  playerBlifeSlider: {fileID: 0}
   cardPowerText: {fileID: 9177873661292010281}
   specialModeText: {fileID: 9177873661292010281}
   attackText: {fileID: 5755445980415034835}
