@@ -51,8 +51,17 @@ public class SliderManager : MonoBehaviour
         {
             lifeTextPA.text = "-" + clic.lastCardRef.attackPoints.ToString();
             lifeTextPA.gameObject.SetActive(true);
-            sliderFillPA.color = Color.red;
+            sliderFillPA.color = Color.green;
             lifeA -= lifeA * speed * Time.deltaTime;
+            playerAlifeSlider.value = lifeA;
+            return;
+        }
+        else if(currPointsA > lifeA)
+        {
+            lifeTextPA.text = "+" + clic.lastCardRef.deffense.ToString();
+            lifeTextPA.gameObject.SetActive(true);
+            sliderFillPA.color = Color.green;
+            lifeA += lifeA * speed * Time.deltaTime;
             playerAlifeSlider.value = lifeA;
             return;
         }
@@ -70,9 +79,18 @@ public class SliderManager : MonoBehaviour
             playerBlifeSlider.value = lifeB;
             return;
         }
+        else if (currPointsA > lifeB)
+        {
+            lifeTextPB.text = "-" + clic.lastCardRef.deffense.ToString();
+            lifeTextPB.gameObject.SetActive(true);
+            sliderFillPB.color = Color.red;
+            lifeB += lifeB * speed * Time.deltaTime;
+            playerBlifeSlider.value = lifeB;
+            return;
+        }
         lifeTextPB.gameObject.SetActive(false);
 
-        sliderFillPB.color = Color.green;
+        sliderFillPB.color = Color.red;
 
     }
 }
