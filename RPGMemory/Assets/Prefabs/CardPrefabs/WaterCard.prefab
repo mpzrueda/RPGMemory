@@ -152,9 +152,10 @@ MonoBehaviour:
   deffense: 30
   creature: {fileID: 6171542257580076002}
   physicalCard: {fileID: 6171542258764764299}
-  rotSpeed: 3
+  rotSpeed: 100
   cardType: 3
   cardSpecialModes: 0
+  spawner: {fileID: 0}
   flip: 0
   particleEffect: {fileID: 6430873402275229124}
   flipCardSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}

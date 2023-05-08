@@ -9,7 +9,8 @@ public class ClickManager : MonoBehaviour
     public Card carta_1;
     [HideInInspector]
     public Card carta_2;
-
+    [HideInInspector]
+    public Card lastCardRef;
     private States state;
     WaitForSeconds WaitFor = new WaitForSeconds(3.5f);
     DecisioningManager decisioningManager;
@@ -22,11 +23,11 @@ public class ClickManager : MonoBehaviour
 
     void Update()
     {
-        playing();
+        Playing();
     }
 
 
-    void playing()
+    void Playing()
     {
         if(GameManager.Instance.modality == Modality.Multiplayer &&(GameManager.Instance.gameStates == GameStates.turnA || GameManager.Instance.gameStates == GameStates.turnB))
         {
@@ -79,11 +80,16 @@ public class ClickManager : MonoBehaviour
         if(carta_1.id == carta_2.id)
         {
             //Debug.Log("Son iguales");
-            carta_1.MatchAnimTrigger();
+            //StartCoroutine(carta_1.MatchAnimTrigger());
+            carta_1.ActivateEffect();
+            carta_2.ActivateEffect();
             yield return StartCoroutine(carta_2.MatchAnimTrigger());
+            yield return StartCoroutine(carta_1.MatchAnimTrigger());
             StartCoroutine(decisioningManager.ActivateDecisionMaking());
+            lastCardRef = carta_1;
             carta_1.DestroyMe();
             carta_2.DestroyMe();
+            
         }
         else
         {

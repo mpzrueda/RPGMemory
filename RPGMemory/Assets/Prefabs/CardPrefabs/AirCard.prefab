@@ -152,9 +152,10 @@ MonoBehaviour:
   deffense: 15
   creature: {fileID: 9125118162946659744}
   physicalCard: {fileID: 5439113855295275117}
-  rotSpeed: 5
+  rotSpeed: 1
   cardType: 0
   cardSpecialModes: 0
+  spawner: {fileID: 0}
   flip: 0
   particleEffect: {fileID: 4740398916964625602}
   flipCardSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
@@ -407,6 +408,10 @@ PrefabInstance:
     - target: {fileID: 196076, guid: 20a769104331d8b48ac7d1ea0d49cdf3, type: 3}
       propertyPath: m_Name
       value: Grey
+      objectReference: {fileID: 0}
+    - target: {fileID: 196076, guid: 20a769104331d8b48ac7d1ea0d49cdf3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 409426, guid: 20a769104331d8b48ac7d1ea0d49cdf3, type: 3}
       propertyPath: m_RootOrder

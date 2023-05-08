@@ -53,7 +53,7 @@ public class UIController_Game : MonoBehaviour
     public void GameOverCanva()
     {
         game0verPanel.gameObject.SetActive(true);
-        winnerText.text = "Congrats. The Glory is yours.";
+        winnerText.text = "Congrats. The Glory is yours!";
     }
 
     IEnumerator AttackUI()
